@@ -1,18 +1,20 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "abr.h"
 
-typedef int type_perso;
+typedef struct maillonpile{
+  ABR arbre;
+  struct maillonpile *suiv;
+}maillon_pile;
 
-typedef struct pile{
-    int tailleMax;
-    int rangSommet;
-    //type_perso *tab;
-    int *tab;
-}pile_t;
+typedef maillon_pile *Pile;
 
-pile_t initPile(int t);
-int estVidePile(pile_t *p);
-int estPleinePile(pile_t *p);
-void empiler(pile_t *p, int elt);
-void depiler(pile_t *p, int *elt);
-void afficherPile(pile_t *p);
+typedef enum {FALSE, TRUE} Booleen;
+
+Pile creerPileVide(void);
+Booleen estPileVide(Pile p);
+void empiler(Pile *ptp, ABR a);
+Booleen depiler(Pile *ptp, ABR *a);
+Booleen sommetPile(Pile p, ABR *a);
+void afficherPile(Pile p);
