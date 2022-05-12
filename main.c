@@ -21,6 +21,8 @@ int main(void){
     //infixe(a);
 
     infixeIteratif(a);
+
+    printf("Hauteur : %d\n",hauteur(a));
     //libererArbre(&a);
     return 0;
 }

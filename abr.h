@@ -18,3 +18,4 @@ void infixeIteratif(ABR a);
 void insertion(ABR *a, int val);
 //void libererArbre(ABR *a);
 void initAbreFichier(ABR *a, char tab[], int nbval);
+int hauteur(ABR a);

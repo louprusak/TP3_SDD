@@ -65,6 +65,7 @@ void infixeIteratif(ABR a){
             fin = 1;
         }
     }
+    
 }
 
 void initAbreFichier(ABR *a, char tab[], int nbval){
@@ -82,6 +83,25 @@ void initAbreFichier(ABR *a, char tab[], int nbval){
             insertion(a,tabval[j]);
         }
         
+    }
+}
+
+int hauteur(ABR a){
+    int fg = 0;
+    int fd = 0;
+
+    if(!a){
+        return 0;
+    }  
+    else{
+        fg = hauteur(a->filsgauche);
+        fd = hauteur(a->filsdroit);
+        if(fg > fd){
+            return 1+fg;
+        }
+        else{
+            return 1+fd;
+        }
     }
 }
 

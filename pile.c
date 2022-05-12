@@ -46,7 +46,7 @@ Booleen sommetPile(Pile p, ABR *a){
 void afficherPile(Pile p){
 	while(!estPileVide(p)){
 	
-		printf("%d ",p->arbre);
+		printf("%d ",(int) p->arbre);
 		p=p->suiv;
 	}
 	printf("\n");
