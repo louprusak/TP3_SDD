@@ -18,7 +18,9 @@ int main(void){
 
     initAbreFichier(&a, "val.txt", 50);
 
-    infixe(a);
+    //infixe(a);
+
+    infixeIteratif(a);
     //libererArbre(&a);
     return 0;
 }

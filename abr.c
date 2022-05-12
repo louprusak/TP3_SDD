@@ -1,4 +1,5 @@
 #include "abr.h"
+#include "pile.h"
 
 ABR creerArbreVide(void){
     return NULL;
@@ -40,6 +41,29 @@ void infixe(ABR a){
         infixe(a->filsgauche);
         printf("%d\n",a->valeur);
         infixe(a->filsdroit);
+    }
+}
+
+void infixeIteratif(ABR a){
+    int fin = 0;
+    ABR tmp = a;
+    pile_t p = initPile(100);
+
+    while(!fin){
+        while(tmp != NULL){
+            empiler(&p,tmp);
+            tmp = tmp->filsgauche;
+        }
+
+        if(!estVidePile(&p)){
+
+            depiler(&p,&tmp);
+            printf("%d\n",tmp->valeur);
+            tmp = tmp->filsdroit;
+        }
+        else{
+            fin = 1;
+        }
     }
 }
 
