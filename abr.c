@@ -1,16 +1,19 @@
 //#include "abr.h"
 #include "pile.h"
 
+//Crée un arbre vide
 ABR creerArbreVide(void){
     return NULL;
 }
 
+//Retourne vrai si l'abre est vide
 int estArbreVide(ABR a){
     int code = 0;
     if(!a) code = 1;
     return code;
 }
 
+//Insert une valeur dans l'arbre
 void insertion(ABR *a, int val){
     if(estArbreVide(*a)){
         Noeud *tmp = allouerNoeud();
@@ -25,6 +28,7 @@ void insertion(ABR *a, int val){
     }
 }
 
+//Alloue un noeud de l'abre et l'initialise
 Noeud* allouerNoeud(void){
     Noeud *tmp = (Noeud*) malloc(sizeof(Noeud));
     if(!tmp){
@@ -36,6 +40,7 @@ Noeud* allouerNoeud(void){
     return tmp;
 }
 
+//Parcours infixe de l'arbre sous forme récursive
 void infixe(ABR a){
     if(!estArbreVide(a)){
         infixe(a->filsgauche);
@@ -44,6 +49,7 @@ void infixe(ABR a){
     }
 }
 
+//Parcours infixe de l'arbre sous forme itérative
 void infixeIteratif(ABR a){
     int fin = 0;
     ABR tmp = a;
@@ -68,6 +74,7 @@ void infixeIteratif(ABR a){
     
 }
 
+//Initialisation de l'arbre avec des valeurs d'un fichier
 void initAbreFichier(ABR *a, char tab[], int nbval){
     int tabval[nbval];
     int i = 0;
@@ -86,6 +93,7 @@ void initAbreFichier(ABR *a, char tab[], int nbval){
     }
 }
 
+//Retourne le hauteur de l'arbre
 int hauteur(ABR a){
     int fg = 0;
     int fd = 0;
