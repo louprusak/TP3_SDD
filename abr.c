@@ -113,6 +113,46 @@ int hauteur(ABR a){
     }
 }
 
+int suppr (ABR *a, int val){
+    ABR cour = *a;
+    ABR prec = *a;
+    int code = 1;
+
+
+    while(cour && cour->valeur != val){
+        prec = cour;
+        if (cour->valeur < val){
+            cour = cour->filsdroit;
+        }else{
+            cour=cour->filsgauche;
+        }
+    }
+    if (cour && cour->valeur == val){
+        if(cour->filsdroit){
+            if (prec->valeur>cour->valeur){
+                prec->filsgauche = cour->filsdroit;
+            } else {
+                prec->filsdroit = cour->filsdroit;
+            }
+            ABR cour2 = cour->filsdroit;
+            while ((cour2) && (cour2->filsgauche)){
+                cour2 = cour2->filsgauche;
+            }
+            cour2->filsgauche=cour->filsgauche;
+            free(cour);
+        } else {
+            if (prec->valeur>cour->valeur){
+                prec->filsgauche = cour->filsgauche;
+            }else{
+                prec->filsdroit = cour ->filsgauche;
+            }
+        }
+    } else {
+        code = 0;
+    }
+    return code;
+}
+
 // void libererArbre(ABR *a){
 //     if(!estArbreVide((*a)->filsdroit)) libererArbre(&((*a)->filsdroit));
 //     if(!estArbreVide((*a)->filsgauche)) libererArbre(&((*a)->filsgauche));

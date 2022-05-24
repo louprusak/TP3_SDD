@@ -2,7 +2,7 @@
 
 int main(void){
     ABR a = creerArbreVide();
-    if(estArbreVide(a)) printf("arbre vide\n");
+    //if(estArbreVide(a)) printf("arbre vide\n");
     Noeud *n = allouerNoeud();
     n->valeur = 1;
     //printf("%d\n",n->valeur);
@@ -20,9 +20,17 @@ int main(void){
 
     //infixe(a);
 
-    infixeIteratif(a);
+    //infixeIteratif(a);
 
-    printf("Hauteur : %d\n",hauteur(a));
+    if (suppr(&a,10)){
+        printf("Suppression réussie\n");
+        infixeIteratif(a);
+    } else {
+        printf("Échec de la suppression\n");
+        infixeIteratif(a);
+    }
+
+    //printf("Hauteur : %d\n",hauteur(a));
     //libererArbre(&a);
     return 0;
 }
